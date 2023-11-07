@@ -1,5 +1,5 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+
+package HighwayInfo;
 public class HighwayInfo {
     public static void main(String[] args) {
         printHighwayInfo(90);
@@ -23,19 +23,14 @@ public class HighwayInfo {
 
         // calculations
         highWayType = (highway >= 1 && highway <= 99) ? "primary" : "auxiliary";
-
         direction = (highway % 2 == 0) ? "east/west" : "north/south";
 
-        if (digitCount >= 3) {
-            service = "";
-        } else {
-            service = String.format("%s", numberAsString.length());
-        }
-
+        // output
         if (digitCount < 3) {
             System.out.printf("The %d is %s, going %s.%n", highway, highWayType, direction);
         } else if (digitCount == 3){
-            System.out.printf("The %d is %s, serving the %s, going %s %n", highway, highWayType, service, direction);
+            service = numberAsString.substring(digitCount - 2);
+            System.out.printf("The %d is %s, serving the %s, going %s.%n", highway, highWayType, service, direction);
         }
     }
 }
