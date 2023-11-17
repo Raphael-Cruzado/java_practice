@@ -79,7 +79,7 @@ public class PearlsPancakes {
         System.out.printf("25%% tip: %.2f%n", twentyFivePercent);
     }
 
-    public static double getDinerOrder() { // orderTotal isn't getting the 2nd input
+    public static double getDinerOrder() { // orderTotal isn't getting the 2nd only the 1st one
         int userChoice = getMenuChoice();
         System.out.printf("$%.2f%n", getPriceOfMenuChoice(userChoice));
         double orderTotal = getPriceOfMenuChoice(userChoice);
