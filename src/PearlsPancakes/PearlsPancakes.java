@@ -9,20 +9,6 @@ public class PearlsPancakes {
         getDinerOrder();
         getNumberOfDinersAtTable();
 
-        /* while (dinerWantsAnotherItem()) {
-            getMenuChoice();
-            double orderTotal = 0;
-            if (userChoice >= 1 && userChoice <=7) {
-                System.out.printf("$%.2f%n", getPriceOfMenuChoice(userChoice));
-                orderTotal = orderTotal + getPriceOfMenuChoice(userChoice);
-                displaySuggestedTipAmounts(getPriceOfMenuChoice(userChoice));
-            } else {
-                System.out.println("Invalid menu Item"); // fix this when you have time
-            }
-        } */
-
-
-
     }
     public static void displayMenu() {
         System.out.println("1) eggs          $3.25");
