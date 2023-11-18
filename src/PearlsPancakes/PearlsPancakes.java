@@ -60,7 +60,7 @@ public class PearlsPancakes {
     }
 
     public static int getNumberOfDinersAtTable() {
-        System.out.println("Enter number of diners at this table : ");
+        System.out.print("Enter number of diners at this table : ");
         int numOfDiners = input.nextInt();
         System.out.println("Enter number of diners at this table : " + numOfDiners);
 
@@ -79,16 +79,18 @@ public class PearlsPancakes {
         System.out.printf("25%% tip: %.2f%n", twentyFivePercent);
     }
 
-    public static double getDinerOrder() { // orderTotal isn't getting the 2nd only the 1st one
+    public static double getDinerOrder() {
+        System.out.println("please select an item from our menu : ");
+        displayMenu();
         int userChoice = getMenuChoice();
         System.out.printf("$%.2f%n", getPriceOfMenuChoice(userChoice));
         double orderTotal = getPriceOfMenuChoice(userChoice);
 
         while (dinerWantsAnotherItem()) {
-            getMenuChoice();
-            System.out.printf("$%.2f%n", getPriceOfMenuChoice(userChoice));
-            orderTotal = orderTotal + getPriceOfMenuChoice(userChoice);
-            displaySuggestedTipAmounts(getPriceOfMenuChoice(userChoice));
+            int newChoice = getMenuChoice();
+            orderTotal = orderTotal + getPriceOfMenuChoice(newChoice);
+            System.out.printf("$%.2f%n", getPriceOfMenuChoice(newChoice));
+            // displaySuggestedTipAmounts(getPriceOfMenuChoice(userChoice));
 
             System.out.printf("Order Total: $%.2f%n", orderTotal);
         }
