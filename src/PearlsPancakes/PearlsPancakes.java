@@ -3,16 +3,14 @@ package PearlsPancakes;
 import java.util.Scanner;
 
 public class PearlsPancakes {
-    public static Scanner input =  new Scanner(System.in);
-
+    public static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
-        double finalPrice = getDinersOrder();
-        System.out.printf("final price: $%.2f%n", finalPrice);
-        displaySuggestedTipAmounts(finalPrice);
-        getNumberOfDinersAtTable();
-
+        double totalRegisterAmount =getAllTableOrders();
+        System.out.printf("ticket totals + tax for all tables: $%.2f\n", totalRegisterAmount);
     }
+
     public static void displayMenu() {
+        System.out.println();
         System.out.println("1) eggs          $3.25");
         System.out.println("2) bacon         $4.00");
         System.out.println("3) pancakes      $2.50");
@@ -26,13 +24,6 @@ public class PearlsPancakes {
     public static int getMenuChoice() {
         System.out.print("Enter a menu choice : ");
         int userChoice = input.nextInt();
-
-        if (userChoice >= 1 && userChoice <=7) {
-            System.out.println("Menu item : " + userChoice);
-        } else {
-            System.out.println("Invalid menu Item");
-        }
-
         return userChoice;
     }
 
@@ -51,22 +42,13 @@ public class PearlsPancakes {
 
     public static boolean dinerWantsAnotherItem() {
         System.out.print("Another item ('yes' or 'no')? ");
-        String userChoice = input.next().toLowerCase();
-        if (userChoice.equals("yes")) {
-            System.out.println("yes");
-        } else {
-            System.out.println("no");
-            return false;
-        }
-
+        String userChoice = input.next();
         return  userChoice.equals("yes");
     }
 
     public static int getNumberOfDinersAtTable() {
         System.out.print("Enter number of diners at this table : ");
         int numOfDiners = input.nextInt();
-        System.out.println("Diners at this table : " + numOfDiners);
-
         return  numOfDiners;
     }
 
@@ -80,23 +62,68 @@ public class PearlsPancakes {
         System.out.printf("15%% tip: %.2f%n", fifteenPercent);
         System.out.printf("20%% tip: %.2f%n", twentyPercent);
         System.out.printf("25%% tip: %.2f%n", twentyFivePercent);
+        System.out.println();
     }
 
     public static double getDinersOrder() {
-        System.out.println("please select an item from our menu : ");
         displayMenu();
-        int userChoice = getMenuChoice();
-        System.out.printf("$%.2f%n", getPriceOfMenuChoice(userChoice));
-        double orderTotal = getPriceOfMenuChoice(userChoice);
+        double orderTotal = 0.0;
 
         while (dinerWantsAnotherItem()) {
-            int newChoice = getMenuChoice();
-            orderTotal = orderTotal + getPriceOfMenuChoice(newChoice);
-            System.out.printf("$%.2f%n", getPriceOfMenuChoice(newChoice));
-            // displaySuggestedTipAmounts(getPriceOfMenuChoice(userChoice));
-            System.out.printf("Order Total: $%.2f%n", orderTotal);
+            int userChoice = getMenuChoice();
+            orderTotal = orderTotal + getPriceOfMenuChoice(userChoice);
         }
 
         return orderTotal;
+    }
+
+    public static boolean moreTablesToServe() {
+        System.out.print("Another table ('yes' or 'no')? ");
+        String userChoice = input.next().toLowerCase();
+        if (userChoice.equals("yes")) {
+            System.out.println("yes");
+        } else {
+            System.out.println("no");
+            return false;
+        }
+
+        return  userChoice.equals("yes");
+    }
+
+    public static double getTableOrder() {
+        int numberOfDiners = getNumberOfDinersAtTable();
+        double tableOrder;
+        double tableTotal = 0.0;
+
+
+        while (numberOfDiners > 0) {
+            --numberOfDiners;
+            tableOrder = getDinersOrder();
+            tableTotal = tableTotal + tableOrder;
+        }
+
+        double addTax = tableTotal * .08;
+
+        System.out.println();
+        System.out.println("Table total : " + tableTotal);
+        System.out.println("Tax amount : " + addTax);
+        System.out.println();
+        displaySuggestedTipAmounts(tableTotal);
+
+        return addTax + tableTotal;
+    }
+
+    public static double getAllTableOrders() {
+        System.out.print("Another table ('yes' or 'no')? ");
+        String moreTables = input.next();
+        double totalCost = 0.0;
+
+        while (moreTables.equals("yes")) {
+            totalCost += getTableOrder();
+            System.out.print("Another table ('yes' or 'no')? ");
+            moreTables = input.next();
+        }
+
+        return totalCost;
     }
 }
