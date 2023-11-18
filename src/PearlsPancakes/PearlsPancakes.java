@@ -6,7 +6,9 @@ public class PearlsPancakes {
     public static Scanner input =  new Scanner(System.in);
 
     public static void main(String[] args) {
-        getDinerOrder();
+        double finalPrice = getDinersOrder();
+        System.out.printf("final price: $%.2f%n", finalPrice);
+        displaySuggestedTipAmounts(finalPrice);
         getNumberOfDinersAtTable();
 
     }
@@ -18,6 +20,7 @@ public class PearlsPancakes {
         System.out.println("5) oatmeal       $3.99");
         System.out.println("6) milk          $1.25");
         System.out.println("7) donut         $2.00");
+        System.out.println();
     }
 
     public static int getMenuChoice() {
@@ -25,7 +28,7 @@ public class PearlsPancakes {
         int userChoice = input.nextInt();
 
         if (userChoice >= 1 && userChoice <=7) {
-            System.out.println("Enter a menu choice : " + userChoice);
+            System.out.println("Menu item : " + userChoice);
         } else {
             System.out.println("Invalid menu Item");
         }
@@ -48,7 +51,7 @@ public class PearlsPancakes {
 
     public static boolean dinerWantsAnotherItem() {
         System.out.print("Another item ('yes' or 'no')? ");
-        String userChoice = input.next();
+        String userChoice = input.next().toLowerCase();
         if (userChoice.equals("yes")) {
             System.out.println("yes");
         } else {
@@ -62,7 +65,7 @@ public class PearlsPancakes {
     public static int getNumberOfDinersAtTable() {
         System.out.print("Enter number of diners at this table : ");
         int numOfDiners = input.nextInt();
-        System.out.println("Enter number of diners at this table : " + numOfDiners);
+        System.out.println("Diners at this table : " + numOfDiners);
 
         return  numOfDiners;
     }
@@ -79,7 +82,7 @@ public class PearlsPancakes {
         System.out.printf("25%% tip: %.2f%n", twentyFivePercent);
     }
 
-    public static double getDinerOrder() {
+    public static double getDinersOrder() {
         System.out.println("please select an item from our menu : ");
         displayMenu();
         int userChoice = getMenuChoice();
@@ -91,7 +94,6 @@ public class PearlsPancakes {
             orderTotal = orderTotal + getPriceOfMenuChoice(newChoice);
             System.out.printf("$%.2f%n", getPriceOfMenuChoice(newChoice));
             // displaySuggestedTipAmounts(getPriceOfMenuChoice(userChoice));
-
             System.out.printf("Order Total: $%.2f%n", orderTotal);
         }
 
