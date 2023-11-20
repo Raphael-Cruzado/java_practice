@@ -114,14 +114,15 @@ public class PearlsPancakes {
     }
 
     public static double getAllTableOrders() {
-        moreTablesToServe();
-        double totalCost = 0.0;
+        double registerTotal = 0.0;
+        int numDiners = getNumberOfDinersAtTable();
+        double tableTotal = getTableOrder();
 
         while (moreTablesToServe()) {
-            totalCost += getTableOrder();
+            registerTotal += tableTotal;
             moreTablesToServe();
         }
 
-        return totalCost;
+        return registerTotal;
     }
 }
