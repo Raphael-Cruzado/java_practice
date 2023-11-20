@@ -114,14 +114,12 @@ public class PearlsPancakes {
     }
 
     public static double getAllTableOrders() {
-        System.out.print("Another table ('yes' or 'no')? ");
-        String moreTables = input.next();
+        moreTablesToServe();
         double totalCost = 0.0;
 
-        while (moreTables.equals("yes")) {
+        while (moreTablesToServe()) {
             totalCost += getTableOrder();
-            System.out.print("Another table ('yes' or 'no')? ");
-            moreTables = input.next();
+            moreTablesToServe();
         }
 
         return totalCost;
