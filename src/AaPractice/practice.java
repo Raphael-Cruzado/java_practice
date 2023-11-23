@@ -9,10 +9,13 @@ import java.io.File;
 
 
 class practice {
+    public static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) throws IOException {
-        String parentPath = "C:\\Users\\rapha\\IdeaProjects\\java_practice\\src\\AaPractice\\";
 
     }
+
+
 
 
 }
