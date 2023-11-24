@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 class CopyFile {
     public static void main(String[] args) throws IOException {
-        String parentPath = "C:\\Users\\rapha\\IdeaProjects\\java_practice\\src\\AaPractice\\";
+        String parentPath = "C:\\Users\\rapha\\IdeaProjects\\java_practice\\src\\CopyFile\\";
         makeCopy(parentPath + "original.dat", parentPath + "copy.dat");
 
         printFile(parentPath + "copy.dat");
