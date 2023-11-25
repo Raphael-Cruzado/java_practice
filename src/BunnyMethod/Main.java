@@ -1,4 +1,4 @@
-package AaPractice;
+package BunnyMethod;
 
 
 class Main {
