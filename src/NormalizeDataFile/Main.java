@@ -6,9 +6,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Main {
+    public static  String dataPath = "C:\\Users\\rapha\\IdeaProjects\\java_practice\\src\\NormalizeDataFile\\";
     public static void main(String[] args) throws IOException {
-        String dataPath = "C:\\Users\\rapha\\IdeaProjects\\java_practice\\src\\NormalizeDataFile\\";
-
         Scanner input = new Scanner(System.in);
         ArrayList<Double> myData = null;
 
@@ -95,7 +94,7 @@ class Main {
 
     // Part 08 - Save Data
     public static void saveData(ArrayList<Double> values) throws IOException {
-        try (PrintWriter writer = new PrintWriter("normal.dat")) {
+        try (PrintWriter writer = new PrintWriter(dataPath + "normal.dat")) {
             for (double value : values) {
                 writer.printf("%.2f%n", value);
             }
