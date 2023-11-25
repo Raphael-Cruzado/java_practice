@@ -1,25 +1,25 @@
 package AaPractice;
 
 class Bunny {
-    int age;
-    String name;
+    // make no changes to these field declarations
+    private String name;
+    private int age;
 
-    void hop() {
-        System.out.println(name + " hops around.");
+    // define the mutator (setter) methods below
+    public void setName(String newName) {
+        this.name = newName;
     }
 
-    void eat(String food) {
-        if (food.equals("carrots")) {
-            System.out.println(name + " eats the " + food + ".");
-            hop(); // because carrots are our favorite food
-        } else if (food.equals("lettuce")) {
-            System.out.println(name + " eats the " + food + ".");
-        } else {
-            System.out.println(name + " cannot eat the " + food + ".");
-        }
+    public void setAge(int newAge) {
+        this.age = newAge;
     }
 
-    void sleep() {
-        System.out.println(name + " takes a nap.");
+
+    // make no other changes to this code
+    public void print() {
+        System.out.println(" (\\(\\   ");
+        System.out.println(" (-.-)    ");
+        System.out.println(" O_(\")(\")");
+        System.out.printf("%s is %d years old.\n", this.name, this.age);
     }
 }
